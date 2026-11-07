@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KEYQUEST – Learn to type in Hindi, English, numbers and code</title>
+<meta name="description" content="Gamified typing practice for English, Hindi, numbers and programming languages. Free, private, works offline.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;600&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="nav">
+  <a class="logo" href="#/home">KEY<b>QUEST</b></a>
+  <button id="menuBtn" class="ghost" aria-label="Menu">Menu</button>
+  <nav id="menu">
+    <a href="#/home" data-r="home">Home</a>
+    <a href="#/english" data-r="english">English</a>
+    <a href="#/hindi" data-r="hindi">हिन्दी</a>
+    <a href="#/numbers" data-r="numbers">Numbers</a>
+    <a href="#/code" data-r="code">Code</a>
+    <a href="#/dashboard" data-r="dashboard">Dashboard</a>
+  </nav>
+  <button id="themeBtn" class="ghost" aria-label="Toggle theme">Light</button>
+</header>
+
+<main>
+<section id="page-home" class="page">
+  <div class="hero">
+    <h1>Type faster.<br>In every language you work in.</h1>
+    <p>Timed tests for English, Hindi and numbers, plus real code snippets in seven languages. Your scores and charts stay on your device.</p>
+    <div class="cta"><a class="btn" href="#/english">Start an English test</a><a class="btn alt" href="#/hindi">हिन्दी अभ्यास</a></div>
+    <p id="homeStats" class="mut"></p>
+  </div>
+  <div class="cards">
+    <a class="card mode" href="#/english"><h3>English</h3><p>15 to 120 second tests. WPM uses the standard 5-character word.</p></a>
+    <a class="card mode" href="#/hindi"><h3>हिन्दी</h3><p>Devanagari practice scored in CPM with accuracy.</p></a>
+    <a class="card mode" href="#/numbers"><h3>Numbers</h3><p>Digit groups for data entry and numeric keypad speed.</p></a>
+    <a class="card mode" href="#/code"><h3>Code</h3><p>Python, JavaScript, C++, Java, HTML, CSS and SQL.</p></a>
+    <a class="card mode" href="#/dashboard"><h3>Dashboard</h3><p>History, progress charts and personal bests.</p></a>
+  </div>
+</section>
+
+<section id="page-practice" class="page" hidden>
+  <h2 id="pTitle"></h2>
+  <p id="pHint" class="mut"></p>
+  <div id="opts" class="opts"></div>
+  <div class="stats">
+    <div class="st"><span>Time</span><b id="sT">0</b></div>
+    <div class="st"><span id="lA">WPM</span><b id="sA">0</b></div>
+    <div class="st"><span id="lB">CPM</span><b id="sB">0</b></div>
+    <div class="st"><span>Accuracy</span><b id="sAcc">100%</b></div>
+    <div class="st"><span>Mistakes</span><b id="sE">0</b></div>
+  </div>
+  <div class="bar"><i id="bar"></i></div>
+  <div id="box" class="typebox">
+    <div id="text" class="text" aria-live="off"></div>
+    <textarea id="inp" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" aria-label="Typing input"></textarea>
+    <div id="focusMsg" class="focusmsg">Click here or press any key to start. The timer begins with your first keystroke.</div>
+  </div>
+  <div class="row"><span id="next" class="mut"></span><span id="note" class="mut"></span></div>
+  <div id="kb" class="kb" aria-hidden="true"></div>
+  <div class="row"><button id="restart" class="btn alt">Restart (Esc)</button><button id="newText" class="btn alt">New text</button></div>
+</section>
+
+<section id="page-dashboard" class="page" hidden>
+  <h2>Your dashboard</h2>
+  <div id="dashEmpty" class="card empty" hidden>
+    <h3>No sessions yet</h3>
+    <p>Finish a typing test and your speed, accuracy and personal bests will show up here.</p>
+    <a class="btn" href="#/english">Take your first test</a>
+  </div>
+  <div id="dashFull" hidden>
+    <div id="summary" class="stats"></div>
+    <div class="row"><label for="fMode">Show charts for</label>
+      <select id="fMode"><option value="all">All modes</option><option value="english">English</option><option value="hindi">Hindi</option><option value="numbers">Numbers</option><option value="code">Code</option></select></div>
+    <div class="two">
+      <div class="card"><h3>Speed (CPM), last 20 sessions</h3><div id="chSpeed"></div></div>
+      <div class="card"><h3>Accuracy (%), last 20 sessions</h3><div id="chAcc"></div></div>
+    </div>
+    <h3>Personal bests</h3><div id="bests" class="scroll"></div>
+    <h3>Recent practice</h3><div id="history" class="scroll"></div>
+    <button id="clearBtn" class="btn danger">Clear all history</button>
+  </div>
+</section>
+</main>
+
+<div id="result" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="resTitle">
+  <div class="card modalbox">
+    <h2 id="resTitle">Results</h2>
+    <p id="resBadge" class="badge"></p>
+    <div id="resBody"></div>
+    <p id="resNote" class="mut"></p>
+    <div class="row"><button id="resRetry" class="btn">Try again</button><button id="resNew" class="btn alt">New text</button><a class="btn alt" href="#/dashboard">Dashboard</a></div>
+  </div>
+</div>
+<footer>KEYQUEST · Progress is saved only in this browser.</footer>
+<script src="script.js"></script>
+</body>
+</html>
